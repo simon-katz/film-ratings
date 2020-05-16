@@ -4,6 +4,7 @@
             [ring.mock.request :as mock]
             [integrant.core :as ig]))
 
+
 (deftest check-index-handler
   (testing "Ensure that the index handler returns two links for add and list films"
     (let [handler (ig/init-key :film-ratings.handler/index {})
