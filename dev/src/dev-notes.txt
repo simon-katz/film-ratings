@@ -15,3 +15,44 @@ But first (for now) you need to run the migrations (which aren't running in prod
     export DB_HOST=localhost
     export DB_PASSWORD=password
     lein run :duct/migrator
+
+
+lein uberjar
+java -jar target/film-ratings.jar
+
+
+docker build . -t film-ratings-app
+# The following only works on Linux
+docker run --network host -e DB_HOST=localhost -e DB_PASSWORD=password film-ratings-app
+
+docker-compose build
+docker-compose up
+
+To access the DB using psql:
+
+rlwrap docker exec -i film-ratings_postgres_1 psql -U filmuser filmdb
+    eg:
+    > \d
+    >                  List of relations
+    >  Schema |        Name        |   Type   |  Owner
+    > --------+--------------------+----------+----------
+    >  public | film               | table    | filmuser
+    >  public | film_id_seq        | sequence | filmuser
+    >  public | ragtime_migrations | table    | filmuser
+    > (3 rows)
+    >
+    > select * from film;
+    >  id | name | description | rating
+    > ----+------+-------------+--------
+    >   1 | f1   | ff1         |      1
+    >   2 | f2   | ff2         |      2
+    >   3 | f3   | ff3         |      3
+    > (3 rows)
+
+To access the DB using a local tool (eg TablePlus):
+    NOT GOOD!
+        Add
+            ports:
+              - '5432:5432'
+        to docker-compose.yml
+    NOT GOOD!
