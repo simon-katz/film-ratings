@@ -1,0 +1,17 @@
+Docker Postgres
+===============
+
+docker run -p 5432:5432 -e POSTGRES_USER=filmuser -e POSTGRES_DB=filmdb -e POSTGRES_PASSWORD=password postgres:alpine
+
+psql -h localhost -p 5432 -U filmuser filmdb
+
+
+export DB_HOST=localhost
+export DB_PASSWORD=password
+lein run
+
+But first (for now) you need to run the migrations (which aren't running in production mode):
+
+    export DB_HOST=localhost
+    export DB_PASSWORD=password
+    lein run :duct/migrator
