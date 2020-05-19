@@ -1,3 +1,11 @@
+The Blogposts
+=============
+
+https://circleci.com/blog/build-a-clojure-web-app-using-duct/
+https://circleci.com/blog/package-a-clojure-web-application-using-docker/
+https://circleci.com/blog/deploy-a-clojure-web-application-to-aws-using-terraform/
+
+
 Docker Postgres
 ===============
 
