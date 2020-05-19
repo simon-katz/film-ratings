@@ -56,3 +56,9 @@ To access the DB using a local tool (eg TablePlus):
               - '5432:5432'
         to docker-compose.yml
     NOT GOOD!
+
+
+docker build . -t simonkatz3/film-ratings-app
+
+docker login
+docker push simonkatz3/film-ratings-app:latest
