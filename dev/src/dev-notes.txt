@@ -62,3 +62,15 @@ docker build . -t simonkatz3/film-ratings-app
 
 docker login
 docker push simonkatz3/film-ratings-app:latest
+
+
+Notes on things wrong in the blog posts
+=======================================
+
+- Initial project creation
+  Changes to dependencies mean things don't work.
+
+- Something that only works on Linux
+  `docker run --network host ...`
+
+- DOCKERHUB_USER and DOCKERHUB_USERNAME
