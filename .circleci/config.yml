@@ -3,7 +3,7 @@ executors:
     docker-publisher:
       working_directory: ~/cci-film-ratings # directory where steps will run
       environment:
-        IMAGE_NAME: simonkatz3/film-ratings-app
+        IMAGE_NAME: simonkatz/film-ratings-app
       docker:
         - image: circleci/buildpack-deps:stretch
 jobs:
