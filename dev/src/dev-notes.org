@@ -1,14 +1,9 @@
-The Blogposts
-=============
-
-https://circleci.com/blog/build-a-clojure-web-app-using-duct/
-https://circleci.com/blog/package-a-clojure-web-application-using-docker/
-https://circleci.com/blog/deploy-a-clojure-web-application-to-aws-using-terraform/
-
-
-Docker Postgres
-===============
-
+* Chris Howe-Jones's Clojure/Duct/CircleCI/Docker/AWS/Terrfaform tutorial
+** The Blogposts
+*** [[https://circleci.com/blog/build-a-clojure-web-app-using-duct/][Build a Clojure web app using Duct]]
+*** [[https://circleci.com/blog/package-a-clojure-web-application-using-docker/][Package a Clojure web application using Docker]]
+*** [[https://circleci.com/blog/deploy-a-clojure-web-application-to-aws-using-terraform/][Deploy a Clojure web application to AWS using Terraform]]
+** Docker Postgres notes
 docker run -p 5432:5432 -e POSTGRES_USER=filmuser -e POSTGRES_DB=filmdb -e POSTGRES_PASSWORD=password postgres:alpine
 
 psql -h localhost -p 5432 -U filmuser filmdb
@@ -70,37 +65,20 @@ docker build . -t simonkatz3/film-ratings-app
 
 docker login
 docker push simonkatz3/film-ratings-app:latest
-
-
-Questions on return to this on 2020-06-03
-=========================================
-
-Note that:
-
-- You have a docker image running on port 3000 -- it's there after reboots.
-
-
-What do you call a docker running thing? (Is it just a running image?)
-
-
-Exposing ports
-
-- How do you expose a port from an existing running docker image?
-  - Did you find a way to do this?
-  - Was there something different for Linux vs macOS
-- Did you decide against doing this? (security reasons)
-- Wasn't there some reason that you could use psl but not TablePlus?
-  - Maybe something built in to the Docker image that lets you use psql?
-
-
-
-Notes on things wrong in the blog posts
-=======================================
-
-- Initial project creation
-  Changes to dependencies mean things don't work.
-
-- Something that only works on Linux
-  `docker run --network host ...`
-
-- DOCKERHUB_USER and DOCKERHUB_USERNAME
+** Questions on return to this on 2020-06-03
+*** Note that:
+**** You have a docker image running on port 3000 -- it's there after reboots.
+*** What do you call a docker running thing? (Is it just a running image?)
+*** Exposing ports
+**** How do you expose a port from an existing running docker image?
+***** Did you find a way to do this?
+***** Was there something different for Linux vs macOS
+**** Did you decide against doing this? (security reasons)
+**** Wasn't there some reason that you could use psl but not TablePlus?
+***** Maybe something built in to the Docker image that lets you use psql?
+** Notes on things wrong in the blog posts
+*** Initial project creation
+**** Changes to dependencies mean things don't work.
+*** Something that only works on Linux
+`docker run --network host ...`
+*** DOCKERHUB_USER and DOCKERHUB_USERNAME
