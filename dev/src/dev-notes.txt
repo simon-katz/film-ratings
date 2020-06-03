@@ -72,6 +72,28 @@ docker login
 docker push simonkatz3/film-ratings-app:latest
 
 
+Questions on return to this on 2020-06-03
+=========================================
+
+Note that:
+
+- You have a docker image running on port 3000 -- it's there after reboots.
+
+
+What do you call a docker running thing? (Is it just a running image?)
+
+
+Exposing ports
+
+- How do you expose a port from an existing running docker image?
+  - Did you find a way to do this?
+  - Was there something different for Linux vs macOS
+- Did you decide against doing this? (security reasons)
+- Wasn't there some reason that you could use psl but not TablePlus?
+  - Maybe something built in to the Docker image that lets you use psql?
+
+
+
 Notes on things wrong in the blog posts
 =======================================
 
