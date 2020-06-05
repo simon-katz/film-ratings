@@ -88,7 +88,6 @@ docker push simonkatz/film-ratings-app:latest
 ***** Do it whenever we tag a version of our repository
 ****** TODO Is this what you would want?
 ******* tags can be anything
-
 ** TODO Questions on return to this on 2020-06-03
 *** Note that:
 **** You have a docker image running on port 3000 -- it's there after reboots.
