@@ -5,8 +5,9 @@
 *** [[https://circleci.com/blog/deploy-a-clojure-web-application-to-aws-using-terraform/][Deploy a Clojure web application to AWS using Terraform]]
 ** Notes
 *** See the _nomis/scripts files
-*** Run migrations
-**** (initially the app doesn't do migrations in production mode; I think that changes later in the tutorial)
+*** The app
+**** Run migrations
+***** (initially the app doesn't do migrations in production mode; I think that changes later in the tutorial)
 export DB_HOST=localhost
 export DB_PASSWORD=password
 lein run :duct/migrator
@@ -14,8 +15,8 @@ lein run :duct/migrator
 -OR-
 
 DB_HOST=localhost DB_PASSWORD=password lein run :duct/migrator
-*** To run with lein
-**** See "_nomis/scripts/run-app"
+**** To run with lein
+***** See "_nomis/scripts/run-app"
 export DB_HOST=localhost
 export DB_PASSWORD=password
 lein run
@@ -23,36 +24,37 @@ lein run
 -OR-
 
 DB_HOST=localhost DB_PASSWORD=password lein run
-*** To build and run an uberjar
+**** To build and run an uberjar
 lein uberjar
 DB_HOST=localhost DB_PASSWORD=password java -jar target/film-ratings.jar
-*** To run a Postgres Docker image
-**** See "_nomis/scripts/run-db"
+*** Docker
+**** To run a Postgres Docker image
+***** See "_nomis/scripts/run-db"
 docker run -p 5432:5432 -e POSTGRES_USER=filmuser -e POSTGRES_DB=filmdb -e POSTGRES_PASSWORD=password postgres:alpine
-*** To run psql with that DB
-**** See "_nomis/scripts/run-psql"
+**** To run psql with that DB
+***** See "_nomis/scripts/run-psql"
 psql -h localhost -p 5432 -U filmuser filmdb
-*** To build the Docker image
+**** To build the Docker image
 docker build . -t film-ratings-app
-*** To run the Docker image
-**** v1
+**** To run the Docker image
+***** v1
 # The following only works on Linux
 docker run --network host -e DB_HOST=localhost -e DB_PASSWORD=password film-ratings-app
-**** v2
+***** v2
 # The following attempt has no access to the DB
 docker run -e DB_HOST=localhost -e DB_PASSWORD=password -p 3000:3000 film-ratings-app
-**** So on macOS, it seems you have no way to run DB and app locally as separate containers
-***** (But you can when you set up the docker-compose stuff)
-*** Use docker-compose
+***** So on macOS, it seems you have no way to run DB and app locally as separate containers
+****** (But you can when you set up the docker-compose stuff)
+**** Use docker-compose
 DB_PASSWORD=password docker-compose build
 DB_PASSWORD=password docker-compose up
-*** Stop/quit the docker-compose up
-**** C-c
+**** Stop/quit the docker-compose up
+***** C-c
 C-c will stop the containers, and a subsequent `docker-compose up` will restart those same containers
-**** docker-compose down
+***** docker-compose down
 `docker-compose down` will stop and remove the containers
-*** To access the DB within the docker-compose stuff
-**** To access the DB using psql
+**** To access the DB within the docker-compose stuff
+***** To access the DB using psql
 rlwrap docker exec -i film-ratings_postgres_1 psql -U filmuser filmdb
     eg:
     > \d
@@ -71,23 +73,21 @@ rlwrap docker exec -i film-ratings_postgres_1 psql -U filmuser filmdb
     >   2 | f2   | ff2         |      2
     >   3 | f3   | ff3         |      3
     > (3 rows)
-**** To access the DB using a local tool (eg TablePlus):
-***** NOT GOOD!
+***** To access the DB using a local tool (eg TablePlus):
+****** NOT GOOD!
 Add the following to docker-compose.yml:
     ports:            # NOT GOOD!
         - '5432:5432' # NOT GOOD!
-***** TODO Ah, but I think we aren't going to use docker-compose in production
-****** If docker-compose is only for dev machines, then maybe this is OK
-*** Rebuild the Docker image and tag it with our Docker Hub repository id
+****** TODO Ah, but I think we aren't going to use docker-compose in production
+******* If docker-compose is only for dev machines, then maybe this is OK
+**** Rebuild the Docker image and tag it with our Docker Hub repository id
 docker build . -t simonkatz/film-ratings-app
-*** Manually push image to Docker Hub
+**** Manually push image to Docker Hub
 docker login
 docker push simonkatz/film-ratings-app:latest
-*** Then the CircleCI stuff
+*** CircleCI
 **** Setting up CircleCI to push to Docker Hub
-***** Do it whenever we tag a version of our repository
-****** TODO Is this what you would want?
-******* tags can be anything
+***** Do it whenever we tag a version of our repository with x.y.z
 ** TODO Questions on return to this on 2020-06-03
 *** Note that:
 **** You have a docker image running on port 3000 -- it's there after reboots.
