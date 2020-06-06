@@ -1,9 +1,9 @@
 * Chris Howe-Jones's Clojure/Duct/CircleCI/Docker/AWS/Terrfaform tutorial
-** The Blogposts
+** The blogposts
 *** [[https://circleci.com/blog/build-a-clojure-web-app-using-duct/][Build a Clojure web app using Duct]]
 *** [[https://circleci.com/blog/package-a-clojure-web-application-using-docker/][Package a Clojure web application using Docker]]
 *** [[https://circleci.com/blog/deploy-a-clojure-web-application-to-aws-using-terraform/][Deploy a Clojure web application to AWS using Terraform]]
-** Docker Postgres notes
+** Notes
 *** See the _nomis/scripts files
 *** Run migrations
 **** (initially the app doesn't do migrations in production mode; I think that changes later in the tutorial)
