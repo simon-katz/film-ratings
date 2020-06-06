@@ -88,6 +88,25 @@ docker push simonkatz/film-ratings-app:latest
 *** CircleCI
 **** Setting up CircleCI to push to Docker Hub
 ***** Do it whenever we tag a version of our repository with x.y.z
+*** Terraform
+**** Words from the blog post
+***** [[file:~/development-100/repositories/nomis/_learning/film-ratings-terraform/film-ratings-app-service.tf][film-ratings-app-service.tf]] and [[file:~/development-100/repositories/nomis/_learning/film-ratings-terraform/film-ratings-db-service.tf][film-ratings-db-service.tf]]
+****** Two ECS tasks
+******* film_ratings_app
+******* film_ratings_db
+****** These are going to run in ECS containers
+******* two instances of the app
+******* one of the DB
+****** The app and DB tasks will each run inside their own services called
+******* film_ratings_app_service
+******* film_ratings_db_service
+**** Commands
+==== IN THE film-ratings-terraform DIRECTORY! ====
+terraform init
+terraform plan
+
+NOT YET DONE:
+terraform apply
 ** TODO Questions on return to this on 2020-06-03
 *** Note that:
 **** You have a docker image running on port 3000 -- it's there after reboots.
