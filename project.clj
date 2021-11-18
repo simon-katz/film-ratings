@@ -11,7 +11,8 @@
                  [org.xerial/sqlite-jdbc "3.21.0.1"]
                  [org.postgresql/postgresql "42.1.4"]
                  [duct/database.sql.hikaricp "0.3.3"]
-                 [hiccup "1.0.5"]]
+                 [hiccup "1.0.5"]
+                 [org.clojure/core.rrb-vector "0.1.2"]]
   :plugins [[duct/lein-duct "0.10.6"]]
   :main ^:skip-aot film-ratings.main
   :uberjar-name "film-ratings.jar"
