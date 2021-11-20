@@ -7,7 +7,7 @@ services:
       - "POSTGRES_DB=filmdb"
       - "POSTGRES_PASSWORD=${DB_PASSWORD}"
     volumes:
-      - /tmp/postgresdata:/var/lib/postgresql/data
+      - ${NOMIS_OSX_PRIVATE_TMP:-/tmp}/film-ratings/postgresql-data:/var/lib/postgresql/data
     image: 'postgres:alpine'
   filmapp:
     restart: 'always'
