@@ -4,3 +4,5 @@
 # `--network host`.
 
 docker run --network host -e DB_HOST=localhost -e DB_PASSWORD=password film-ratings-app
+
+# Could use simonkatz/film-ratings-app
