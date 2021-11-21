@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# It seems that `-p 3000:3000` doesn't work. You cannot publish ports with
+# `--network host`.
+
+docker run --network host -e DB_HOST=localhost -e DB_PASSWORD=password film-ratings-app
