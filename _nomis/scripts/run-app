@@ -1,3 +1,6 @@
 #!/usr/bin/env bash
 
-DB_HOST=localhost DB_PASSWORD=password lein run
+# We are relying on the env vars `DB_HOST` and `DB_PASSWORD` being set.
+# (Maybe use `direnv` and a `.envrc` file.)
+
+lein run
