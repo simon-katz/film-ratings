@@ -119,6 +119,10 @@ To stop the docker compose services run:
 docker-compose down
 ```
 
+## More commands
+
+See `_nomis/scripts` dir.
+
 ## Legal
 
 Copyright © 2018 Chris Howe-Jones
