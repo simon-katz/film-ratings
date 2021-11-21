@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -e -x
+
+# docker login # -- needed at some point I guess
+
+docker build . -t simonkatz/film-ratings-app
+docker push simonkatz/film-ratings-app:latest
