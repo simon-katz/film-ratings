@@ -3,6 +3,7 @@
   (:require [clojure.java.io :as io]
             [duct.core :as duct]))
 
+
 (duct/load-hierarchy)
 
 (defn -main [& args]
